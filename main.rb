@@ -6,15 +6,18 @@ def resolution_finder(image_link)
   FastImage.size(image_link)
 end
 
-size = resolution_finder("D:/win7Part/Downloads/Wallpaper/2 be sorted/1399441664160.jpg")
+def unique_rename(file_name)
+  
+end
+
+file_name = Pathname.new("D:/win7Part/Downloads/Wallpaper/2 be sorted/1402073852307.jpg").basename
+
+size = resolution_finder("D:/win7Part/Downloads/Wallpaper/2 be sorted/#{file_name}")
 width = size[0]
 height = size[1]
 
-file_name = Pathname.new("D:/win7Part/Downloads/Wallpaper/2 be sorted/1399441664160.jpg").basename
-
 puts "height = #{height}"
 puts "width = #{width}"
-# puts Dir["D:/win7part/Downloads/Wallpaper/2 be sorted/*"].empty?
 
 #while true
   if Dir["D:/win7part/Downloads/Wallpaper/2 be sorted/*"].empty?
@@ -26,6 +29,8 @@ puts "width = #{width}"
       File.rename("D:/win7part/Downloads/Wallpaper/2 be sorted/#{file_name}", "D:/win7Part/Downloads/Wallpaper/#{width}x#{height}/#{file_name}")
     else
       puts "Folder will be made and files put in"
+      Dir.mkdir "D:/win7Part/Downloads/Wallpaper/#{width}x#{height}/"
+      File.rename("D:/win7part/Downloads/Wallpaper/2 be sorted/#{file_name}", "D:/win7Part/Downloads/Wallpaper/#{width}x#{height}/#{file_name}")
     end    
   end
   #sleep 300
